@@ -23,7 +23,7 @@ HttpClient.DefaultProxy = new WebProxy(new Uri("http://localhost:8866"));
 
 app.UseHttpsRedirection();
 
-//app.UseAuthorization();
+
 app.UseAuthentication();
 
 app.Use(async (context, next) =>
@@ -38,6 +38,8 @@ app.Use(async (context, next) =>
         await next();
     }
 });
+
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
